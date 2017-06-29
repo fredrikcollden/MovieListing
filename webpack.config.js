@@ -20,6 +20,9 @@ module.exports = {
     	]
   	},
 	plugins: [new HtmlWebpackPlugin({
-		title: 'Viaplay test'
+		title: "Viaplay test",
+		template: __dirname + "/app/index.html",
+		filename: "index.html",
+		inject: "body"
 	})]
 };
