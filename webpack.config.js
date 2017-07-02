@@ -5,7 +5,7 @@ module.exports = {
 	context: __dirname + "/app",
 	entry: "./js/app.js",
 	output: {
-	filename: "app.js",
+		filename: "app.js",
 		path: __dirname + "/dist",
 	},
 	resolve: {
@@ -13,6 +13,11 @@ module.exports = {
 	},
   	module: {
     	loaders: [
+			
+            { 
+				test: /\.(jpe?g|gif|png|svg|woff|ttf|wav|mp3)$/, 
+				loader: "file-loader",
+			},
     		{
         		test: /\.jsx?$/,
         		exclude: /node_modules/,
