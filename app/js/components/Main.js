@@ -4,7 +4,7 @@ import Header from './Header';
 import Content from './Content';
 import Footer from './Footer';
 
-class Main extends React.Component {    
+class Main extends React.Component {
 	render() {
 		return (
 			<div style={styles.main}>
@@ -17,34 +17,34 @@ class Main extends React.Component {
 				<div style={styles.footer}>
 					<Footer />
 				</div>
-			</div>	
-    	);
-   	}
+			</div>
+		);
+	}
 }
 
 const styles = {
-  main: {
-    display: 'flex',
-    flexDirection: 'column',
-	minHeight: '100vh',
-  },
-  header: {
-	display: 'flex',
-    height: 60,
-	backgroundColor: '#333333',
-	alignItems: 'center',
-	padding: '0 20px',
-  },
-  content: {
-	flex: 1,
-	padding: '0 20px',
-    backgroundColor: '#dddddd',
-  },
-  footer: {
-    height: 50,
-	padding: '0 20px',
-    backgroundColor: '#333333',
-  }
+	main: {
+		display: 'flex',
+		flexDirection: 'column',
+		minHeight: '100vh',
+	},
+	header: {
+		display: 'flex',
+		height: 60,
+		backgroundColor: 'rgb(33, 45, 51)',
+		alignItems: 'center',
+		padding: '0 20px',
+	},
+	content: {
+		flex: 1,
+		padding: '0 20px',
+		backgroundColor: '#f9f9fb',
+	},
+	footer: {
+		height: 50,
+		padding: '0 20px',
+		backgroundColor: 'rgb(33, 45, 51)',
+	}
 };
 
 export default Main;

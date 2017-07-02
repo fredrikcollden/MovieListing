@@ -1,20 +1,14 @@
 import React from 'react';
 
-const SeriesItem = ({imgUrl, seriesTitle}) => (  
-         <div className={'seriesItemWrapper'} style={styles.seriesItemWrapper}>
+const SeriesItem = ({imgUrl, seriesTitle, itemSize}) => (  
+         <div className={'seriesItemWrapper'} style={{'width' : itemSize, margin: 5}}>
 			 <img style={styles.itemImage} src={imgUrl} alt={seriesTitle} />
 		 </div>
 );
 
 const styles = {
-	seriesItemWrapper: {
-		//display: 'inline-block',
-		width: 200,
-		margin: 5,
-	},
 	itemImage: {
-		width: '100%',
-		//height: 100,
+		width: '100%'
 	}
 };
 

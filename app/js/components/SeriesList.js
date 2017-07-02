@@ -4,27 +4,26 @@ import { seriesGetData } from '../actions/actions';
 import SeriesItem from './SeriesItem';
 
 class SeriesList extends React.Component {    
-   constructor() {
-	   super();
+	constructor(props) {
+	   super(props);
 	   this.state = {
-			fillerSlots: parseInt(window.innerWidth / 200)
+			fillerSlots: parseInt(window.innerWidth / this.props.itemSize)
 	   }
     }
 
    componentDidMount() {
 	   window.addEventListener("resize", this.updateDimensions.bind(this));
 	   this.updateDimensions.bind(this);
-	   this.props.getData('/api.js');
-	   //this.props.getData('https://content.viaplay.se/pc-se/serier/samtliga');
+	   //this.props.getData('/api.js');
+	   this.props.getData('https://content.viaplay.se/pc-se/serier/samtliga');
    }
 
    	updateDimensions() {
-		var fillerSlotsCount = parseInt(window.innerWidth / 200);
+		var fillerSlotsCount = parseInt(window.innerWidth / this.props.itemSize);
 		this.setState({fillerSlots: fillerSlotsCount});
     }
    
    render() {
-	   console.log(this.state.fillerSlots);
         if (this.props.hasError) {
             return <p>Sorry! There was an error loading the series</p>;
         }
@@ -34,13 +33,13 @@ class SeriesList extends React.Component {
 
 		var fillers = [];
 		for (var i=0; i < this.state.fillerSlots; i++) {
-			fillers.push(<SeriesItem key={'filler'+i} />);
+			fillers.push(<SeriesItem key={'filler'+i} itemSize= {this.props.itemSize}/>);
 		}
 
         return (
             <div style={styles.listStyle}>
                {this.props.series.map((serie, index) => (
-                	<SeriesItem key={index} imgUrl={serie.content.images.landscape.url} seriesTitle={serie.content.series.title} />
+                	<SeriesItem key={index} imgUrl={serie.content.images.landscape.url} seriesTitle={serie.content.series.title} itemSize={this.props.itemSize} />
                 ))}
 
 				{fillers}
@@ -52,21 +51,11 @@ class SeriesList extends React.Component {
 
 const styles = {
 	listStyle: {
-		//top: 0,
-		//left: 0,
-		//right: 0,
-		//textAlign: 'center',
-		//position: 'relative',
-
 		display: 'inline-flex',
 		flexDirection: 'row',
 		flexWrap: 'wrap',
-		justifyContent: 'center'
-
-		//display: 'flex',
-		//padding: 5,
-		//flexWrap: 'wrap',
-		//justifyContent: 'flex-start'
+		justifyContent: 'center',
+		marginTop: 10,
 	}
 };
 
