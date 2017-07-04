@@ -44,12 +44,12 @@ module.exports = {
 		filename: "index.html",
 		inject: "body"
 	}),
-		/*new webpack.DefinePlugin({
+		new webpack.DefinePlugin({
 		'process.env': {
 			'NODE_ENV': JSON.stringify('production')
 		}
 		}), 
 		new webpack.optimize.UglifyJsPlugin(),
-		new webpack.optimize.AggressiveMergingPlugin()*/
+		new webpack.optimize.AggressiveMergingPlugin()
 	]
 };

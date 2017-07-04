@@ -14,12 +14,13 @@ class SeriesList extends React.Component {
    componentDidMount() {
 	   window.addEventListener("resize", this.updateDimensions.bind(this));
 	   this.updateDimensions.bind(this);
-	   //this.props.getData('/api.js');
+	   //this.props.getData('/api.js'); //for local testing
 	   this.props.getData('https://content.viaplay.se/pc-se/serier/samtliga');
    }
 
+   //this feels a bit wrong deep down in your spine, but so does the solution with mediaqueries, but maybe it should be mediaqueries instead, or.. 
    	updateDimensions() {
-		var fillerSlotsCount = parseInt(window.innerWidth / this.props.itemSize);
+		var fillerSlotsCount = parseInt(window.innerWidth / this.props.itemSize)-1;
 		this.setState({fillerSlots: fillerSlotsCount});
     }
    
@@ -41,9 +42,7 @@ class SeriesList extends React.Component {
                {this.props.series.map((serie, index) => (
                 	<SeriesItem key={index} imgUrl={serie.content.images.landscape.url} seriesTitle={serie.content.series.title} itemSize={this.props.itemSize} />
                 ))}
-
 				{fillers}
-
             </div>
         );
     }

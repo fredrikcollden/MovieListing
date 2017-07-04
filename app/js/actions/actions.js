@@ -20,17 +20,24 @@ export function seriesGetData(url) {
         
         axios.get(url)
         .then(function (response) {
-            console.log(response);
-            console.log(response.data._embedded['viaplay:blocks'][0]._embedded['viaplay:products']);
-			dispatch(seriesIsLoading(false));
-            dispatch(seriesGotData(response.data._embedded['viaplay:blocks'][0]._embedded['viaplay:products']));
+            if (response.data 
+            && response.data._embedded 
+            && response.data._embedded['viaplay:blocks']
+            && response.data._embedded['viaplay:blocks'][0] 
+            && response.data._embedded['viaplay:blocks'][0]._embedded
+            && response.data._embedded['viaplay:blocks'][0]._embedded['viaplay:products']) {
+                dispatch(seriesHasError(false));
+			    dispatch(seriesIsLoading(false));
+                dispatch(seriesGotData(response.data._embedded['viaplay:blocks'][0]._embedded['viaplay:products']));
+            } else {
+                dispatch(seriesHasError(true));
+			    dispatch(seriesIsLoading(false));
+            }
             return response;
         })
         .catch(function (response) {
-            console.log(response);
-			//dispatch(seriesHasError(true));
-            //dispatch(seriesIsLoading(false));
-            //dispatch(seriesGotData(response));
+			dispatch(seriesHasError(true));
+            dispatch(seriesIsLoading(false));
         });
     };
 }

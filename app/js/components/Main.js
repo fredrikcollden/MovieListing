@@ -41,7 +41,7 @@ const styles = {
 		backgroundColor: '#f9f9fb',
 	},
 	footer: {
-		height: 50,
+		height: 40,
 		padding: '0 20px',
 		backgroundColor: 'rgb(33, 45, 51)',
 	}
